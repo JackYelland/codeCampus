@@ -7,7 +7,9 @@ async function filterEvents(eventType) {
     eventFeed.innerHTML = '<h2 class="events__title">Upcoming Events</h2>';
     await displayEvents();
   } else {
-    const response = await fetch(`http://localhost:7000/events/${eventType}`);
+    const response = await fetch(
+      `https://codecampusserver.onrender.com/events/${eventType}`
+    );
     const events = await response.json();
     const eventsArray = events.payload;
     console.log(eventsArray);
@@ -69,7 +71,9 @@ async function displayFilteredEvents(filteredEvents) {
 async function displayEvents() {
   // fetches the events from the server
   try {
-    const response = await fetch(`http://localhost:7000/events/`);
+    const response = await fetch(
+      `https://codecampusserver.onrender.com/events/`
+    );
     const events = await response.json();
     // loops over the array of events and displays html for each event
     await events.payload.forEach((event) => {
